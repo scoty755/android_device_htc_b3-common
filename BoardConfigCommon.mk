@@ -15,9 +15,9 @@
 
 BOARD_VENDOR := htc
 
-LOCAL_PATH := device/htc/hima-common
+LOCAL_PATH := device/htc/b3-common
 
-TARGET_SPECIFIC_HEADER_PATH := device/htc/hima-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/htc/b3-common/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8994
@@ -48,7 +48,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_USES_C2D_COMPOSITION := true
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := device/htc/hima-common/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/htc/b3-common/mkbootimg.mk
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 androidboot.selinux=permissive androidusb.pid=0x065d androidkey.dummy=1 androidtouch.htc_event=1 disk_mode_enable=1
 BOARD_KERNEL_BASE := 0x00078000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -59,7 +59,7 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01f88000 -
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/htc/msm8994
-TARGET_KERNEL_CONFIG := cyanogenmod_hima_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_b3uhl_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
@@ -67,17 +67,17 @@ TARGET_USES_UNCOMPRESSED_KERNEL := true
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4697620480
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 25232932864
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 402653184
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 3758096384
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/htc/hima-common/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/htc/b3-common/rootdir/etc/fstab.qcom
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
-#BOARD_AUDIO_AMPLIFIER := device/htc/hima-common/libaudioamp
+#BOARD_AUDIO_AMPLIFIER := device/htc/b3-common/libaudioamp
 BOARD_SUPPORTS_SOUND_TRIGGER := false
 
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
@@ -103,7 +103,7 @@ AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/hima-common/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/b3-common/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
 
 # Wifi
@@ -168,7 +168,7 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/htc/hima-common/sepolicy
+BOARD_SEPOLICY_DIRS += device/htc/b3-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     cir_fw_update.te \
@@ -191,7 +191,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 TARGET_HW_DISK_ENCRYPTION := false
 
 # CM Hardware
-BOARD_HARDWARE_CLASS := device/htc/hima-common/cmhw
+BOARD_HARDWARE_CLASS := device/htc/b3-common/cmhw
 
 # inherit from the proprietary version
--include vendor/htc/hima-common/BoardConfigVendor.mk
+-include vendor/htc/b3-common/BoardConfigVendor.mk

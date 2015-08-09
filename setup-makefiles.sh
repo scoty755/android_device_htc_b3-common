@@ -3,7 +3,7 @@
 set -e
 
 export VENDOR=htc
-export DEVICE=hima-common
+export DEVICE=b3-common
 
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
@@ -113,7 +113,7 @@ EOF
 
 LOCAL_PATH := \$(call my-dir)
 
-ifneq (\$(filter hima himaul himawl himawhl,\$(TARGET_DEVICE)),)
+ifneq (\$(filter b3 b3uhl,\$(TARGET_DEVICE)),)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE        := com.qualcomm.location
