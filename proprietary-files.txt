@@ -318,7 +318,7 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
 lib64/libawb_calibration.so
-lib/hw/camera.vendor.msm8994.so
+#lib/hw/camera.vendor.msm8994.so
 lib/libawb_calibration.so
 lib/libBeautyChat.so
 lib/libcameraface.so
@@ -856,9 +856,9 @@ vendor/lib/libSSEPKCS11.so
 vendor/lib/libtzdrmgenprov.so
 
 # Broadcom BT / WiFi
-etc/firmware/fw_bcmdhd_apsta.bin
-etc/firmware/fw_bcmdhd.bin
-vendor/firmware/bcm4356A2.hcd
+etc/firmware/fw_bcm4356_apsta.bin
+etc/firmware/fw_bcm4356.bin
+vendor/firmware/BCM4356A2_001.003.015.0064.0175.hcd
 
 # Display tuning
 vendor/lib64/libmm-als.so
@@ -902,9 +902,7 @@ vendor/lib/libwqe.so
 
 # HTC / Other
 bin/cir_fw_update
-bin/htc_dlmode
 bin/htc_ebdlogd
-bin/htc_fastbootd
 etc/cir.img
 etc/firmware/htc_drmprov.b00
 etc/firmware/htc_drmprov.b01
@@ -934,4 +932,4 @@ lib/libhtcsecure.so
 lib/libHtcVteEngine.so
 
 # NFC
-vendor/firmware/libpn547_fw.so
+# vendor/firmware/libpn547_fw.so
