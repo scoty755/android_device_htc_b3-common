@@ -42,7 +42,7 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
 
 # Assertions
-TARGET_BOARD_INFO_FILE ?= device/htc/hima-common/board-info.txt
+TARGET_BOARD_INFO_FILE ?= device/htc/b3-common/board-info.txt
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8994
