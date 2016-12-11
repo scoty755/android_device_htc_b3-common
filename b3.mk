@@ -124,7 +124,7 @@ PRODUCT_PACKAGES += \
 
 # Dot View Case
 PRODUCT_PACKAGES += \
-    Dotcase
+    FlipFlap
 
 # DRM
 PRODUCT_PACKAGES += \
