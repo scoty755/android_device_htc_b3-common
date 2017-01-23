@@ -1,26 +1,32 @@
-## Build and run dtbtool
-DTBTOOL := $(HOST_OUT_EXECUTABLES)/dtbToolCM$(HOST_EXECUTABLE_SUFFIX)
-INSTALLED_DTIMAGE_TARGET := $(PRODUCT_OUT)/dt.img
+LOCAL_PATH := $(call my-dir)
 
-$(INSTALLED_DTIMAGE_TARGET): $(DTBTOOL) $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr $(INSTALLED_KERNEL_TARGET)
-	@echo -e ${CL_CYN}"Start DT image: $@"${CL_RST}
-	$(call pretty,"Target dt image: $(INSTALLED_DTIMAGE_TARGET)")
-	$(hide) $(DTBTOOL) -2 -o $(INSTALLED_DTIMAGE_TARGET) -s $(BOARD_KERNEL_PAGESIZE) -p $(KERNEL_OUT)/scripts/dtc/ $(KERNEL_OUT)/arch/arm64/boot/dts/
-	@echo -e ${CL_CYN}"Made DT image: $@"${CL_RST}
+BOARD_MKBOOTIMG_ARGS += --dt $(TARGET_PREBUILT_DTB)
 
+ifdef TARGET_PREBUILT_DTB
+	PREBUILT_MKBOOTIMG := $(PLATFORM_PATH)/mkbootimg
+endif
 
-## Overload bootimg generation: Same as the original, + --dt arg
-$(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(INSTALLED_DTIMAGE_TARGET)
-	$(call pretty,"Target boot image: $@")
-	$(hide) $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) --dt $(INSTALLED_DTIMAGE_TARGET) --output $@
-	$(hide) $(call assert-max-image-size,$@,$(BOARD_BOOTIMAGE_PARTITION_SIZE),raw)
-	@echo -e ${CL_CYN}"Made boot image: $@"${CL_RST}
+INSTALLED_BOOTIMAGE_TARGET := $(PRODUCT_OUT)/boot.img
+$(INSTALLED_BOOTIMAGE_TARGET): $(INSTALLED_RAMDISK_TARGET)
+	@echo ----- Making recovery image ------
+	$(hide) $(PREBUILT_MKBOOTIMG) \
+		--kernel $(TARGET_PREBUILT_KERNEL) \
+		--ramdisk $(PRODUCT_OUT)/ramdisk.img \
+		--cmdline "$(BOARD_KERNEL_CMDLINE)" \
+		--base $(BOARD_KERNEL_BASE) \
+		--pagesize $(BOARD_KERNEL_PAGESIZE) \
+		$(BOARD_MKBOOTIMG_ARGS) \
+		-o $(INSTALLED_BOOTIMAGE_TARGET)
 
-## Overload recoveryimg generation: Same as the original, + --dt arg
-$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(INSTALLED_DTIMAGE_TARGET) \
-		$(recovery_ramdisk) \
-		$(recovery_kernel)
-	@echo -e ${CL_CYN}"----- Making recovery image ------"${CL_RST}
-	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) --dt $(INSTALLED_DTIMAGE_TARGET) --output $@
-	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
-	@echo -e ${CL_CYN}"Made recovery image: $@"${CL_RST}
+INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
+$(INSTALLED_RECOVERYIMAGE_TARGET): $(recovery_ramdisk)
+	@echo ----- Making recovery image ------
+	$(hide) $(PREBUILT_MKBOOTIMG) \
+		--kernel $(TARGET_PREBUILT_KERNEL) \
+		--ramdisk $(PRODUCT_OUT)/ramdisk-recovery.img \
+		--cmdline "$(BOARD_KERNEL_CMDLINE)" \
+		--base $(BOARD_KERNEL_BASE) \
+		--pagesize $(BOARD_KERNEL_PAGESIZE) \
+		$(BOARD_MKBOOTIMG_ARGS) \
+		-o $(INSTALLED_RECOVERYIMAGE_TARGET)
+	@echo ----- Made recovery image -------- $@

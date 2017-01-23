@@ -188,6 +188,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/data/netmgr_config.xml:system/etc/data/netmgr_config.xml \
     $(LOCAL_PATH)/configs/data/qmi_config.xml:system/etc/data/qmi_config.xml
 
+ifeq ($(RECOVERY_VARIANT),twrp)
+# TWRP specific build flags
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/etc/twrp.fstab:recovery/root/etc/recovery.fstab
+else
 # Init configuration
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -203,6 +208,7 @@ PRODUCT_PACKAGES += \
     init.qcom.fm.sh \
     init.qcom.post_boot.sh \
     init.qcom.uicc.sh
+endif
 
 # Lights
 PRODUCT_PACKAGES += \

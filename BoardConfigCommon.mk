@@ -61,9 +61,8 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01f88000 --tags_offset 0x01d88000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/htc/msm8994
-TARGET_KERNEL_CONFIG := cyanogenmod_b3uhl_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_PREBUILT_KERNEL := $(PLATFORM_PATH)/Image
+TARGET_PREBUILT_DTB := $(PLATFORM_PATH)/dt.img
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 # Partitions
@@ -76,7 +75,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/htc/b3-common/rootdir/etc/fstab.qcom
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -180,6 +179,23 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 #Disable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := false
+
+# TWRP specific build flags
+RECOVERY_VARIANT := twrp
+TW_THEME := portrait_hdpi
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_HAS_DOWNLOAD_MODE := true
+#TW_INCLUDE_CRYPTO := true
+TW_NO_EXFAT_FUSE := true
+#TARGET_RECOVERY_DEVICE_MODULES := twrpdec
+#TW_RECOVERY_ADDITIONAL_RELINK_FILES := $(OUT)/recovery/root/sbin/twrpdec
+#TARGET_USES_LOGD := true
+#TWRP_INCLUDE_LOGCAT := true
+TW_INTERNAL_STORAGE_PATH := "/data/media/0"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 
 # CM Hardware
 BOARD_HARDWARE_CLASS := device/htc/b3-common/cmhw
