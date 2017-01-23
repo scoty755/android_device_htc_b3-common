@@ -1,1 +1,2 @@
-allow mediaserver system_data_file:file { open append };
+allow mediaserver sensorservice_service:service_manager find;
+allow mediaserver system_server:unix_stream_socket rw_socket_perms;
