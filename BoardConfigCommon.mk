@@ -15,7 +15,7 @@
 
 BOARD_VENDOR := htc
 
-COMMON_PATH := device/htc/hima-common
+COMMON_PATH := device/htc/b3-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
@@ -55,7 +55,7 @@ BOARD_RAMDISK_OFFSET := 0x02000000
 ENABLE_CPUSETS := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/htc/msm8994
-TARGET_KERNEL_CONFIG := cyanogenmod_hima_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_b3uhl_defconfig
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 # Audio
@@ -108,7 +108,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 1426063360
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4697620480
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 25232932864
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 3758096384
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -133,7 +133,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_hima
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_b3
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
@@ -163,4 +163,4 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcm4356_apsta.bin"
 WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcm4356.bin"
 
 # inherit from the proprietary version
--include vendor/htc/hima-common/BoardConfigVendor.mk
+-include vendor/htc/b3-common/BoardConfigVendor.mk

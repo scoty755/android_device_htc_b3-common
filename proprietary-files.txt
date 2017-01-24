@@ -84,7 +84,7 @@ vendor/lib/soundfx/libqcvirt.so
 vendor/lib/soundfx/libswdap.so
 
 # Bluetooth
-etc/firmware/BCM4356A2_001.003.015.0100.0102.hcd:etc/firmware/BCM4354A2_001.003.015.0100.0102.hcd
+etc/firmware/BCM4356A2_001.003.015.0079.0263.hcd
 
 # Camera
 bin/mm-qcamera-daemon
@@ -667,11 +667,11 @@ lib/hw/consumerir.default.so
 lib64/hw/consumerir.default.so
 
 # Keymaster
-vendor/firmware/keymaster.b00:vendor/firmware/keymaster/keymaster.b00
-vendor/firmware/keymaster.b01:vendor/firmware/keymaster/keymaster.b01
-vendor/firmware/keymaster.b02:vendor/firmware/keymaster/keymaster.b02
-vendor/firmware/keymaster.b03:vendor/firmware/keymaster/keymaster.b03
-vendor/firmware/keymaster.mdt:vendor/firmware/keymaster/keymaster.mdt
+vendor/firmware/keymaster.b00
+vendor/firmware/keymaster.b01
+vendor/firmware/keymaster.b02
+vendor/firmware/keymaster.b03
+vendor/firmware/keymaster.mdt
 
 # Media
 vendor/lib/libI420colorconvert.so
@@ -760,12 +760,9 @@ vendor/lib64/libconfigdb.so
 vendor/lib64/liblqe.so
 vendor/lib64/libmdmdetect.so
 vendor/lib64/libnetmgr.so
-vendor/lib64/libril-qc-ltedirectdisc.so
 vendor/lib64/libril-qc-qmi-1.so
-vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
-vendor/lib64/libsettings.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libxml.so
 
@@ -779,12 +776,12 @@ vendor/lib64/libthermalioctl.so
 vendor/lib/libthermalclient.so
 
 # Time services
--app/TimeService/TimeService.apk
+app/TimeService/TimeService.apk
 bin/time_daemon
--vendor/lib64/libtime_genoff.so
--vendor/lib64/libTimeService.so
--vendor/lib/libtime_genoff.so
--vendor/lib/libTimeService.so
+vendor/lib64/libtime_genoff.so
+vendor/lib64/libTimeService.so
+vendor/lib/libtime_genoff.so
+vendor/lib/libTimeService.so
 
 # Wifi
 etc/calibration
