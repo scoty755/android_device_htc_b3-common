@@ -254,7 +254,7 @@ Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]
     return StringValue(strdup(ret ? "1" : "0"));
 }
 
-void Register_librecovery_updater_hima() {
-    RegisterFunction("hima.verify_sbl1", VerifySBL1Fn);
-    RegisterFunction("hima.verify_trustzone", VerifyTrustZoneFn);
+void Register_librecovery_updater_b3() {
+    RegisterFunction("b3.verify_sbl1", VerifySBL1Fn);
+    RegisterFunction("b3.verify_trustzone", VerifyTrustZoneFn);
 }

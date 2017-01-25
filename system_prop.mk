@@ -1,5 +1,5 @@
 #
-# System Properties for HTC One M9 (hima)
+# System Properties for HTC Butterfly 3 (b3)
 #
 
 # Audio
@@ -40,7 +40,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true \
     ro.opengles.version=196609 \
     ro.qualcomm.cabl=0 \
-    ro.sf.lcd_density=480
+    ro.sf.lcd_density=640
 
 # Factory Reset Protection
 PRODUCT_PROPERTY_OVERRIDES += \
