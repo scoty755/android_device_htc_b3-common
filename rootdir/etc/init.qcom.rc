@@ -141,6 +141,12 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+    wait /dev/block/bootdevice/by-name/nfc_record
+    mount ext4 /dev/block/bootdevice/by-name/nfc_record /nfc_record nosuid nodev noatime barrier=1,grpid
+    chown system nfc /nfc_record
+    #restorecon cota partition
+    restorecon_recursive /nfc_record
+
 on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
@@ -333,6 +339,16 @@ on boot
 
     chown system graphics /sys/class/leds/lcd-backlight/cabc_level_ctl
     chown system system /sys/class/leds/lcd-backlight-nits/brightness
+
+    # for Felica Calibaration
+    chmod 0666 /sys/class/SONY_FELICA/cxd224x/seteem
+    chmod 0666 /sys/class/SONY_FELICA/cxd224x/geteem
+    chmod 0666 /sys/class/SONY_FELICA/cxd224x/setreg
+    chmod 0666 /sys/class/SONY_FELICA/cxd224x/getreg
+    chmod 0666 /sys/class/SONY_FELICA/cxd224x/mfg_nfc_ctrl
+
+    chmod 0600 /dev/cxd224x-i2c
+    chown nfc nfc /dev/cxd224x-i2c
 
 # Services start here
 
