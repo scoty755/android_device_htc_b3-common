@@ -58,6 +58,8 @@ on fs
     mount_all fstab.qcom
     restorecon_recursive /persist
 
+    mkdir /nfc_record 0740 system nfc
+
 on post-fs
     chown root log /proc/vmallocinfo
     chmod 0440 /proc/vmallocinfo
