@@ -350,6 +350,49 @@ on boot
     chmod 0600 /dev/cxd224x-i2c
     chown nfc nfc /dev/cxd224x-i2c
 
+    # FullSEG +
+    #++ DTV_PCN1000011_HTC_DTV_SERVER
+    # [HTC]  DTV server
+    service dtvserver /system/bin/dtvserver
+        class main
+        group sdcard_rw sdcard_r media_rw
+    #-- DTV_PCN1000011_HTC_DTV_SERVER
+
+    #++ DTV_PCN1000013_HTC_DTV_CPRM
+    service dtvcprm /system/bin/dtvcprm
+        class main
+    #-- DTV_PCN1000013_HTC_DTV_CPRM
+    # FullSEG -
+
+    # FullSEG +
+    #++ DTV_PCN1000010_HTC_RF_TESTTOOL
+    # [HTC]  RF test tool
+	    mkdir /data/fw 0744 root root
+	    mkdir /system/bin/fw 0755 root root
+    #-- DTV_PCN1000010_HTC_RF_TESTTOOL
+
+    #++ DTV_PCN1000013_HTC_SECURE_DEVICES
+	    chmod 440 /dev/dvb/adapter0/demux0
+	    chmod 440 /dev/dvb/adapter0/demux1
+	    chmod 440 /dev/dvb/adapter0/demux2
+	    chmod 440 /dev/dvb/adapter0/demux3
+	    chmod 660 /dev/dvb/adapter0/dvr0
+	    chmod 660 /dev/dvb/adapter0/dvr1
+	    chmod 660 /dev/dvb/adapter0/dvr2
+	    chmod 660 /dev/dvb/adapter0/dvr3
+    #-- DTV_PCN1000013_HTC_SECURE_DEVICES
+    # FullSEG -
+
+    # FullSEG +
+    #++ DTV_PCN1000011_HTC_DTV_SERVER
+    # [HTC]  DTV server
+    chown system system /dev/i2c-24
+    chmod 0660 /dev/i2c-24
+    chown system system /dev/mmtuner
+    chmod 0660 /dev/mmtuner
+    #-- DTV_PCN1000011_HTC_DTV_SERVER
+    # FullSEG -
+
 # Services start here
 
 service adsprpcd /system/bin/adsprpcd
