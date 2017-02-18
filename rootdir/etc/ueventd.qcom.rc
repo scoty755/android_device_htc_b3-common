@@ -265,3 +265,6 @@
 /dev/iio:device0            0660        system  system
 /dev/iio:device1            0660        system  system
 /dev/radio_feedback         0660        radio   radio
+
+#HTC for KDDI One-Seg
+/dev/block/mmcblk1 0660 root drmrpc
