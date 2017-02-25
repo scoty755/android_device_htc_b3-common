@@ -31,13 +31,15 @@ import init.qcom.usb.rc
 on early-init
     symlink /data/tombstones /tombstones
 
+    mkdir /carrier 0770 system system
     mkdir /firmware 0771 system system
     mkdir /firmware/adsp 0771 system system
     mkdir /firmware/cpe 0771 system system
+    mkdir /firmware/image 0771 system system
     mkdir /firmware/radio 0771 system system
 
 on init
-    export LD_SHIM_LIBS "/system/lib/liblog.so|/system/lib/liblog_htc.so:/system/lib64/liblog.so|/system/lib64/liblog_htc.so"
+    export LD_SHIM_LIBS "/system/lib/liblog.so|/system/lib/liblog_htc.so:/system/lib64/liblog.so|/system/lib64/liblog_htc.so:/system/lib64/libril.so|/system/lib64/libshim_ril.so"
 
     chmod 0644 /proc/cmdline
 
