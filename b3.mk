@@ -237,6 +237,7 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+    libwifi-hal-bcm \
     libwpa_client \
     hostapd \
     wpa_supplicant \
