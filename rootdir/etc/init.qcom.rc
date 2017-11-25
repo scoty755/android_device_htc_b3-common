@@ -344,6 +344,9 @@ on boot
     chown system graphics /sys/class/leds/lcd-backlight/cabc_level_ctl
     chown system system /sys/class/leds/lcd-backlight-nits/brightness
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
+
     # for Felica Calibaration
     chmod 0666 /sys/class/SONY_FELICA/cxd224x/seteem
     chmod 0666 /sys/class/SONY_FELICA/cxd224x/geteem
