@@ -71,6 +71,8 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
     audiod \
     audio.a2dp.default \
     audio.primary.msm8994 \
@@ -89,13 +91,31 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service \
+    libbt-vendor
+
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl-legacy \
     libshim_camera \
     Snap
 
+# Consumer IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-impl
+
 # Display
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
     copybit.msm8994 \
     gralloc.msm8994 \
     hwcomposer.msm8994 \
@@ -111,8 +131,17 @@ PRODUCT_PACKAGES += \
     GestureHandler
 
 # GPS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
+    libshim_gps
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@1.0-impl \
+    android.hardware.health@1.0-service
 
 # HTC Logging functions
 PRODUCT_PACKAGES += \
@@ -158,11 +187,13 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service \
     keystore.msm8994
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.msm8994
+    android.hardware.light@2.0-service.hima
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -177,9 +208,11 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
+    android.hardware.nfc@1.0-service \
     com.android.nfc_extras \
     NfcNci \
-    nfc_nci.pn54x.default \
+    nfc_nci.msm8994 \
     Tag
 
 PRODUCT_COPY_FILES += \
@@ -209,6 +242,8 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service \
     power.msm8994
 
 # QMI
@@ -231,7 +266,21 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libshim_ril
 
+# Seccomp
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/seccomp/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy \
+    $(LOCAL_PATH)/seccomp/mediaextractor.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy
+
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service
+
 # Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal/thermal-engine.conf:system/etc/thermal-engine.conf
 
@@ -239,9 +288,20 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service.hima
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-service.hima
+
 # Wifi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
+    libwifi-hal-bcm \
     libwpa_client \
     hostapd \
+    wificond \
     wpa_supplicant \
     wpa_supplicant.conf
