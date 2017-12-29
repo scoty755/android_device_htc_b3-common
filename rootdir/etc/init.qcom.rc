@@ -419,14 +419,15 @@ service audiod /system/bin/audiod
 # Charger
 service charger /charger
     class charger
+    user root
     group log
-    seclabel u:r:healthd:s0
+    #seclabel u:r:healthd:s0
 
 service qbcharger /charger -m 1
     disabled
     oneshot
 
-on property:sys.qbcharger.enable=true
+#on property:sys.qbcharger.enable=true
     start qbcharger
 
 on property:sys.qbcharger.enable=false
